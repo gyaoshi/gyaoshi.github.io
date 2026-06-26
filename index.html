@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charging Monitor - 充电监测器</title>
+    <title>gyaoshi - Developer</title>
     <style>
         * {
             margin: 0;
@@ -13,97 +13,130 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: #0d1117;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
+            color: #e6edf3;
         }
 
-        .container {
+        header {
             text-align: center;
-            padding: 2rem;
-            max-width: 600px;
+            padding: 4rem 2rem 2rem;
         }
 
-        .icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #a0a0b0;
-            margin-bottom: 2rem;
+        header p {
+            color: #8b949e;
+            font-size: 1rem;
         }
 
-        .features {
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.8rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
+            margin-top: 1rem;
             justify-content: center;
-            margin-bottom: 2.5rem;
         }
 
-        .feature {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .cta {
-            display: inline-block;
-            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-            color: #fff;
-            text-decoration: none;
-            padding: 0.9rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
+        .tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
         }
 
         footer {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #606070;
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #484f58;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">&#x1F50B;</div>
-        <h1>Charging Monitor</h1>
-        <p class="subtitle">&#x5145;&#x7535;&#x76D1;&#x6D4B;&#x5668; &#8212; &#x4E13;&#x4E1A;&#x7684;&#x7535;&#x6C60;&#x5145;&#x7535;&#x76D1;&#x63A7;&#x5DE5;&#x5177;</p>
-        <div class="features">
-            <div class="feature">&#x26A1; &#x5B9E;&#x65F6;&#x5145;&#x7535;&#x76D1;&#x63A7;</div>
-            <div class="feature">&#x1F50C; &#x5FEB;&#x5145;&#x534F;&#x8BAE;&#x68C0;&#x6D4B;</div>
-            <div class="feature">&#x1F4CA; &#x5386;&#x53F2;&#x6570;&#x636E;&#x56FE;&#x8868;</div>
-            <div class="feature">&#x1F49A; &#x7535;&#x6C60;&#x5065;&#x5EB7;&#x68C0;&#x6D4B;</div>
-        </div>
-        <a class="cta" href="https://play.google.com/store/apps/details?id=com.gyaoshi.chargingmonitor" target="_blank">
-            Google Play &#x4E0B;&#x8F7D;
+    <header>
+        <h1>gyaoshi</h1>
+        <p>Indie Android Developer</p>
+    </header>
+
+    <div class="projects">
+        <a class="card" href="charging-monitor/">
+            <div class="card-icon">&#x1F50B;</div>
+            <div class="card-title">Charging Monitor</div>
+            <div class="card-desc">&#x5B9E;&#x65F6;&#x76D1;&#x6D4B;&#x5145;&#x7535;&#x529F;&#x7387;&#x3001;&#x7535;&#x538B;&#x3001;&#x7535;&#x6D41;&#xFF0C;&#x68C0;&#x6D4B;&#x5FEB;&#x5145;&#x534F;&#x8BAE;&#xFF0C;&#x67E5;&#x770B;&#x7535;&#x6C60;&#x5065;&#x5EB7;&#x72B6;&#x6001;</div>
+            <div class="card-tags">
+                <span class="tag">Android</span>
+                <span class="tag">Kotlin</span>
+                <span class="tag">Compose</span>
+            </div>
         </a>
-        <footer>
-            &copy; 2026 gyaoshi
-        </footer>
+
+        <!-- &#x672A;&#x6765;&#x65B0;&#x9879;&#x76EE;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#里添加，复制上面的 card &#x7ED3;&#x6784;&#x5373;&#x53EF -->
     </div>
+
+    <footer>
+        &copy; 2026 gyaoshi &middot;
+        <a href="https://github.com/gyaoshi">GitHub</a>
+    </footer>
 </body>
 </html>

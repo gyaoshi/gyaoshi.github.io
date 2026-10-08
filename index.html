@@ -3,140 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gyaoshi - Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0d1117;
-            min-height: 100vh;
-            color: #e6edf3;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 2rem 2rem;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #8b949e;
-            font-size: 1rem;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 960px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 1.8rem;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .card:hover {
-            border-color: #58a6ff;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
-        }
-
-        .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: #8b949e;
-            line-height: 1.5;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            justify-content: center;
-        }
-
-        .tag {
-            background: rgba(88, 166, 255, 0.1);
-            color: #58a6ff;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: #484f58;
-            font-size: 0.85rem;
-        }
-
-        footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <meta name="theme-color" content="#07070a">
+    <meta name="description" content="gyaoshi — 独立开发者。Eye Defender、Neck Posture Alert、Multi AI、Charging Monitor 等已上架 Google Play 与 Chrome 应用商店的作品。">
+    <title>GYAOSHI // 独立开发者 · 已上架作品</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307070a'/%3E%3Cpath d='M8 8h20v4H12v40h16v4H8z' fill='%23fcee0a'/%3E%3Cpath d='M56 8v48H36v-4h16V12H36V8z' fill='%2300f0ff'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/sections.css">
 </head>
 <body>
-    <header>
-        <h1>gyaoshi</h1>
-        <p>Indie Android Developer</p>
-    </header>
-
-    <div class="projects">
-        <a class="card" href="charging-monitor/">
-            <div class="card-icon">&#x1F50B;</div>
-            <div class="card-title">Charging Monitor</div>
-            <div class="card-desc">&#x5B9E;&#x65F6;&#x76D1;&#x6D4B;&#x5145;&#x7535;&#x529F;&#x7387;&#x3001;&#x7535;&#x538B;&#x3001;&#x7535;&#x6D41;&#xFF0C;&#x68C0;&#x6D4B;&#x5FEB;&#x5145;&#x534F;&#x8BAE;&#xFF0C;&#x67E5;&#x770B;&#x7535;&#x6C60;&#x5065;&#x5EB7;&#x72B6;&#x6001;</div>
-            <div class="card-tags">
-                <span class="tag">Android</span>
-                <span class="tag">Kotlin</span>
-                <span class="tag">Compose</span>
-            </div>
-        </a>
-
-        <!-- &#x672A;&#x6765;&#x65B0;&#x9879;&#x76EE;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#里添加，复制上面的 card &#x7ED3;&#x6784;&#x5373;&#x53EF -->
+    <!-- 全屏特效层：扫描线 / 噪点 / 暗角 -->
+    <div class="fx" aria-hidden="true">
+        <div class="fx-scan"></div>
+        <div class="fx-noise"></div>
+        <div class="fx-sweep"></div>
+        <div class="fx-vignette"></div>
     </div>
 
-    <footer>
-        &copy; 2026 gyaoshi &middot;
-        <a href="https://github.com/gyaoshi">GitHub</a>
+    <!-- 顶部 HUD 导航 -->
+    <header class="hud">
+        <a class="hud-brand" href="#top">GYAOSHI<span class="cursor-blink">_</span></a>
+        <nav class="hud-nav" aria-label="主导航">
+            <a href="#modules">// MODULES</a>
+            <a href="#stack">// STACK</a>
+            <a href="#uplink">// UPLINK</a>
+        </nav>
+        <div class="hud-status"><span class="hud-dot"></span>SYSTEM ONLINE</div>
+    </header>
+
+    <main id="top">
+        <!-- 首屏 -->
+        <section class="hero">
+            <canvas id="rain" class="hero-rain" aria-hidden="true"></canvas>
+            <div class="hero-inner">
+                <p class="hero-kicker reveal">[ 档案 // GYAOSHI.SYS &nbsp;·&nbsp; NETRUNNER ID 0xGYAOSHI ]</p>
+                <h1 class="glitch reveal" data-text="GYAOSHI">GYAOSHI</h1>
+                <p class="hero-role reveal">INDIE DEVELOPER <span class="sep">/</span> 独立开发者</p>
+                <p class="hero-desc reveal">
+                    做能真正用起来的东西：Android 应用与 Chrome 扩展，
+                    全部<b>上架</b> Google Play 与 Chrome 应用商店，源码开源。
+                </p>
+                <div class="hero-cta reveal">
+                    <a class="btn btn-primary" href="#modules">查看作品 ▼</a>
+                    <a class="btn btn-ghost" href="https://github.com/gyaoshi" target="_blank" rel="noopener">GITHUB ↗</a>
+                </div>
+                <ul class="hero-stats reveal">
+                    <li><b data-count="3">00</b><span>DEPLOYED APPS / 已上架</span></li>
+                    <li><b data-count="3">00</b><span>PLATFORMS / 分发平台</span></li>
+                    <li><b>100%</b><span>OPEN SOURCE / 开源</span></li>
+                </ul>
+            </div>
+            <div class="hero-corner hero-corner-l" aria-hidden="true"></div>
+            <div class="hero-corner hero-corner-r" aria-hidden="true"></div>
+        </section>
+
+        <!-- 滚动跑马灯 -->
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track">
+                <span>GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
+                <span>GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
+            </div>
+        </div>
+
+        <!-- 01 作品模块 -->
+        <section id="modules" class="section">
+            <div class="sec-head reveal">
+                <span class="sec-idx">01</span>
+                <h2>已部署模块<span class="sec-en">DEPLOYED MODULES</span></h2>
+                <span class="sec-line"></span>
+                <span class="sec-note">4 UNITS</span>
+            </div>
+
+            <div class="grid">
+                <!-- MOD_01 Eye Defender -->
+                <article class="card reveal">
+                    <div class="card-top">
+                        <span class="card-id">MOD_01</span>
+                        <span class="card-status">● GOOGLE PLAY</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-glyph" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24Z"/>
+                                <circle cx="24" cy="24" r="6"/>
+                            </svg>
+                        </div>
+                        <h3>Eye Defender</h3>
+                        <p class="card-sub">护眼休息提醒 · 20-20-20 法则</p>
+                        <p class="card-desc">每 20 分钟看 20 英尺外 20 秒。悬浮窗与全屏提醒、屏幕熄灭自动暂停、每日用眼统计与 7 日趋势图，支持 32 种语言。</p>
+                        <ul class="tags">
+                            <li>Kotlin</li>
+                            <li>Jetpack Compose</li>
+                            <li>Material 3</li>
+                        </ul>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.gyaoshi.eyedefender" target="_blank" rel="noopener">GOOGLE PLAY ↗</a>
+                        <a href="https://github.com/gyaoshi/eye-defender" target="_blank" rel="noopener">SOURCE ↗</a>
+                    </div>
+                </article>
+
+                <!-- MOD_02 Neck Posture Alert -->
+                <article class="card reveal">
+                    <div class="card-top">
+                        <span class="card-id">MOD_02</span>
+                        <span class="card-status">● GOOGLE PLAY</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-glyph" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6c6 0 10 4 10 10v6l6 6v6H14v-8"/>
+                                <path d="M10 44h28"/>
+                                <path d="M34 14l4-4m0 0h-6m6 0v6" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Neck Posture Alert</h3>
+                        <p class="card-sub">颈部前倾检测 · 埋头预警</p>
+                        <p class="card-desc">摄像头 + ML Kit 人脸检测，融合机身传感器计算绝对低头角度，超过阈值立即横幅 + 震动提醒。100% 端上处理，不联网、不上传。</p>
+                        <ul class="tags">
+                            <li>CameraX</li>
+                            <li>ML Kit</li>
+                            <li>Sensor Fusion</li>
+                        </ul>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.gyaoshi.neckposturealert" target="_blank" rel="noopener">GOOGLE PLAY ↗</a>
+                        <a href="https://github.com/gyaoshi/posture-check-app" target="_blank" rel="noopener">SOURCE ↗</a>
+                    </div>
+                </article>
+
+                <!-- MOD_03 Multi AI -->
+                <article class="card reveal">
+                    <div class="card-top">
+                        <span class="card-id">MOD_03</span>
+                        <span class="card-status">● CHROME WEB STORE</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-glyph" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="6" y="8" width="36" height="28" rx="2"/>
+                                <path d="M6 16h36M14 24h8m4 0h8M14 30h20"/>
+                                <path d="M18 42h12" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Multi AI</h3>
+                        <p class="card-sub">多引擎聚合 · Chrome 扩展</p>
+                        <p class="card-desc">一个页面同时向 16 个 AI 站点与 40+ 搜索引擎发起请求：统一输入、同时发送、结果并排对比。支持暗色/亮色与 10 种界面语言。</p>
+                        <ul class="tags">
+                            <li>JavaScript</li>
+                            <li>Manifest V3</li>
+                            <li>Chrome Ext</li>
+                        </ul>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://chrome.google.com/webstore/detail/dfmpcglhkdiihjkmmdefcjpalcfmjcci" target="_blank" rel="noopener">WEB STORE ↗</a>
+                        <a href="https://github.com/gyaoshi/multi-ai" target="_blank" rel="noopener">SOURCE ↗</a>
+                    </div>
+                </article>
+
+                <!-- MOD_04 Charging Monitor -->
+                <article class="card reveal">
+                    <div class="card-top">
+                        <span class="card-id">MOD_04</span>
+                        <span class="card-status">● GOOGLE PLAY</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-glyph" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 16h20v16H10z"/>
+                                <path d="M30 20h6v8h-6M14 12v4m12-4v4" stroke-linecap="round"/>
+                                <path d="M22 20l-4 6h6l-4 6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Charging Monitor</h3>
+                        <p class="card-sub">充电功率与电池健康监控</p>
+                        <p class="card-desc">实时显示电压、电流、功率与温度，识别 QC、USB PD、SCP/FCP、VOOC 等快充协议，充电质量评分与历史曲线图表。</p>
+                        <ul class="tags">
+                            <li>Kotlin</li>
+                            <li>Compose</li>
+                            <li>Charts</li>
+                        </ul>
+                    </div>
+                    <div class="card-links">
+                        <a href="charging-monitor/">DETAILS ⟶</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.gyaoshi.chargingmonitor" target="_blank" rel="noopener">GOOGLE PLAY ↗</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 02 技术栈 -->
+        <section id="stack" class="section">
+            <div class="sec-head reveal">
+                <span class="sec-idx">02</span>
+                <h2>技术装备<span class="sec-en">TECH ARSENAL</span></h2>
+                <span class="sec-line"></span>
+                <span class="sec-note">LOADED</span>
+            </div>
+
+            <div class="panels">
+                <div class="panel reveal">
+                    <p class="panel-head">// MOBILE</p>
+                    <ul class="panel-list">
+                        <li>Kotlin</li>
+                        <li>Jetpack Compose</li>
+                        <li>Material Design 3</li>
+                        <li>CameraX</li>
+                        <li>ML Kit</li>
+                        <li>Sensor Fusion</li>
+                    </ul>
+                    <div class="panel-bar" style="--fill: 92%"><span></span></div>
+                    <p class="panel-foot">APK / AAB · GOOGLE PLAY 上架</p>
+                </div>
+
+                <div class="panel reveal">
+                    <p class="panel-head">// BROWSER</p>
+                    <ul class="panel-list">
+                        <li>JavaScript</li>
+                        <li>Manifest V3</li>
+                        <li>declarativeNetRequest</li>
+                        <li>Content Scripts</li>
+                        <li>iframe 多栏布局</li>
+                    </ul>
+                    <div class="panel-bar" style="--fill: 86%"><span></span></div>
+                    <p class="panel-foot">CHROME WEB STORE 上架</p>
+                </div>
+
+                <div class="panel reveal">
+                    <p class="panel-head">// SHIP &amp; OPS</p>
+                    <ul class="panel-list">
+                        <li>Git / GitHub</li>
+                        <li>GitHub Pages</li>
+                        <li>AdMob / app-ads.txt</li>
+                        <li>隐私政策与合规</li>
+                    </ul>
+                    <div class="panel-bar" style="--fill: 80%"><span></span></div>
+                    <p class="panel-foot">从写码到上架的完整闭环</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 联络 -->
+        <section id="uplink" class="section">
+            <div class="sec-head reveal">
+                <span class="sec-idx">03</span>
+                <h2>链路<span class="sec-en">UPLINK</span></h2>
+                <span class="sec-line"></span>
+                <span class="sec-note">OPEN</span>
+            </div>
+
+            <div class="links reveal">
+                <a class="link-row" href="https://github.com/gyaoshi" target="_blank" rel="noopener">
+                    <span class="link-idx">A.</span>
+                    <span class="link-name">GitHub</span>
+                    <span class="link-meta">@gyaoshi · 源码与提交记录</span>
+                    <span class="link-arrow">↗</span>
+                </a>
+                <a class="link-row" href="https://play.google.com/store/apps/developer?id=gyaoshi" target="_blank" rel="noopener">
+                    <span class="link-idx">B.</span>
+                    <span class="link-name">Google Play</span>
+                    <span class="link-meta">开发者主页 · 3 款上架应用</span>
+                    <span class="link-arrow">↗</span>
+                </a>
+                <a class="link-row" href="https://chrome.google.com/webstore/detail/dfmpcglhkdiihjkmmdefcjpalcfmjcci" target="_blank" rel="noopener">
+                    <span class="link-idx">C.</span>
+                    <span class="link-name">Chrome Web Store</span>
+                    <span class="link-meta">Multi AI 扩展</span>
+                    <span class="link-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <span>&copy; 2026 GYAOSHI</span>
+        <span class="foot-mid">BUILT WITH RAW HTML / CSS / JS</span>
+        <span>STATUS: <b>ALL SYSTEMS NOMINAL</b></span>
     </footer>
+
+    <script src="assets/main.js"></script>
 </body>
 </html>

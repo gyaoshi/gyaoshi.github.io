@@ -402,7 +402,8 @@
 }
 
 @media (max-width: 720px) {
-    .hud-nav {
+    .hud-nav,
+    .hud-status {
         display: none;
     }
 

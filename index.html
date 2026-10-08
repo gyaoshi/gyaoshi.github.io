@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sections.css">
+    <script src="assets/i18n.js" defer></script>
+    <script src="assets/main.js" defer></script>
 </head>
 <body>
     <!-- 全屏特效层：扫描线 / 噪点 / 暗角 -->
@@ -25,12 +27,18 @@
     <!-- 顶部 HUD 导航 -->
     <header class="hud">
         <a class="hud-brand" href="#top">GYAOSHI<span class="cursor-blink">_</span></a>
-        <nav class="hud-nav" aria-label="主导航">
+        <nav class="hud-nav" aria-label="主导航" data-i18n-attr="aria-label:nav.aria">
             <a href="#modules">// MODULES</a>
             <a href="#stack">// STACK</a>
             <a href="#uplink">// UPLINK</a>
         </nav>
         <div class="hud-status"><span class="hud-dot"></span>SYSTEM ONLINE</div>
+        <div class="hud-lang" role="group" aria-label="Language" data-i18n-attr="aria-label:lang.aria">
+            <button type="button" data-lang="zh" aria-pressed="true">中</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-lang="ja" aria-pressed="false">日</button>
+            <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
     </header>
 
     <main id="top">
@@ -38,21 +46,21 @@
         <section class="hero">
             <canvas id="rain" class="hero-rain" aria-hidden="true"></canvas>
             <div class="hero-inner">
-                <p class="hero-kicker reveal">[ 档案 // GYAOSHI.SYS &nbsp;·&nbsp; NETRUNNER ID 0xGYAOSHI ]</p>
+                <p class="hero-kicker reveal" data-i18n="hero.kicker">[ 档案 // GYAOSHI.SYS &nbsp;·&nbsp; NETRUNNER ID 0xGYAOSHI ]</p>
                 <h1 class="glitch reveal" data-text="GYAOSHI">GYAOSHI</h1>
-                <p class="hero-role reveal">INDIE DEVELOPER <span class="sep">/</span> 独立开发者</p>
-                <p class="hero-desc reveal">
+                <p class="hero-role reveal" data-i18n-html="hero.role">INDIE DEVELOPER <span class="sep">/</span> 独立开发者</p>
+                <p class="hero-desc reveal" data-i18n-html="hero.desc">
                     做能真正用起来的东西：Android 应用与 Chrome 扩展，
                     全部<b>上架</b> Google Play 与 Chrome 应用商店，源码开源。
                 </p>
                 <div class="hero-cta reveal">
-                    <a class="btn btn-primary" href="#modules">查看作品 ▼</a>
+                    <a class="btn btn-primary" href="#modules" data-i18n="hero.cta">查看作品 ▼</a>
                     <a class="btn btn-ghost" href="https://github.com/gyaoshi" target="_blank" rel="noopener">GITHUB ↗</a>
                 </div>
                 <ul class="hero-stats reveal">
-                    <li><b data-count="3">00</b><span>DEPLOYED APPS / 已上架</span></li>
-                    <li><b data-count="3">00</b><span>PLATFORMS / 分发平台</span></li>
-                    <li><b>100%</b><span>OPEN SOURCE / 开源</span></li>
+                    <li><b data-count="3">00</b><span data-i18n="stat.apps">DEPLOYED APPS / 已上架</span></li>
+                    <li><b data-count="3">00</b><span data-i18n="stat.platforms">PLATFORMS / 分发平台</span></li>
+                    <li><b>100%</b><span data-i18n="stat.oss">OPEN SOURCE / 开源</span></li>
                 </ul>
             </div>
             <div class="hero-corner hero-corner-l" aria-hidden="true"></div>
@@ -62,8 +70,8 @@
         <!-- 滚动跑马灯 -->
         <div class="ticker" aria-hidden="true">
             <div class="ticker-track">
-                <span>GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
-                <span>GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
+                <span data-i18n="ticker">GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
+                <span data-i18n="ticker">GOOGLE PLAY 上架中 · EYE DEFENDER · NECK POSTURE ALERT · CHARGING MONITOR · CHROME WEB STORE · MULTI AI · KOTLIN · JETPACK COMPOSE · ML KIT · MANIFEST V3 ·&nbsp;</span>
             </div>
         </div>
 
@@ -71,9 +79,9 @@
         <section id="modules" class="section">
             <div class="sec-head reveal">
                 <span class="sec-idx">01</span>
-                <h2>已部署模块<span class="sec-en">DEPLOYED MODULES</span></h2>
+                <h2><span data-i18n="sec1.title">已部署模块</span><span class="sec-en">DEPLOYED MODULES</span></h2>
                 <span class="sec-line"></span>
-                <span class="sec-note">4 UNITS</span>
+                <span class="sec-note" data-i18n="sec1.note">4 UNITS</span>
             </div>
 
             <div class="grid">
@@ -91,8 +99,8 @@
                             </svg>
                         </div>
                         <h3>Eye Defender</h3>
-                        <p class="card-sub">护眼休息提醒 · 20-20-20 法则</p>
-                        <p class="card-desc">每 20 分钟看 20 英尺外 20 秒。悬浮窗与全屏提醒、屏幕熄灭自动暂停、每日用眼统计与 7 日趋势图，支持 32 种语言。</p>
+                        <p class="card-sub" data-i18n="card1.sub">护眼休息提醒 · 20-20-20 法则</p>
+                        <p class="card-desc" data-i18n="card1.desc">每 20 分钟看 20 英尺外 20 秒。悬浮窗与全屏提醒、屏幕熄灭自动暂停、每日用眼统计与 7 日趋势图，支持 32 种语言。</p>
                         <ul class="tags">
                             <li>Kotlin</li>
                             <li>Jetpack Compose</li>
@@ -120,8 +128,8 @@
                             </svg>
                         </div>
                         <h3>Neck Posture Alert</h3>
-                        <p class="card-sub">颈部前倾检测 · 埋头预警</p>
-                        <p class="card-desc">摄像头 + ML Kit 人脸检测，融合机身传感器计算绝对低头角度，超过阈值立即横幅 + 震动提醒。100% 端上处理，不联网、不上传。</p>
+                        <p class="card-sub" data-i18n="card2.sub">颈部前倾检测 · 埋头预警</p>
+                        <p class="card-desc" data-i18n="card2.desc">摄像头 + ML Kit 人脸检测，融合机身传感器计算绝对低头角度，超过阈值立即横幅 + 震动提醒。100% 端上处理，不联网、不上传。</p>
                         <ul class="tags">
                             <li>CameraX</li>
                             <li>ML Kit</li>
@@ -149,8 +157,8 @@
                             </svg>
                         </div>
                         <h3>Multi AI</h3>
-                        <p class="card-sub">多引擎聚合 · Chrome 扩展</p>
-                        <p class="card-desc">一个页面同时向 16 个 AI 站点与 40+ 搜索引擎发起请求：统一输入、同时发送、结果并排对比。支持暗色/亮色与 10 种界面语言。</p>
+                        <p class="card-sub" data-i18n="card3.sub">多引擎聚合 · Chrome 扩展</p>
+                        <p class="card-desc" data-i18n="card3.desc">一个页面同时向 16 个 AI 站点与 40+ 搜索引擎发起请求：统一输入、同时发送、结果并排对比。支持暗色/亮色与 10 种界面语言。</p>
                         <ul class="tags">
                             <li>JavaScript</li>
                             <li>Manifest V3</li>
@@ -178,8 +186,8 @@
                             </svg>
                         </div>
                         <h3>Charging Monitor</h3>
-                        <p class="card-sub">充电功率与电池健康监控</p>
-                        <p class="card-desc">实时显示电压、电流、功率与温度，识别 QC、USB PD、SCP/FCP、VOOC 等快充协议，充电质量评分与历史曲线图表。</p>
+                        <p class="card-sub" data-i18n="card4.sub">充电功率与电池健康监控</p>
+                        <p class="card-desc" data-i18n="card4.desc">实时显示电压、电流、功率与温度，识别 QC、USB PD、SCP/FCP、VOOC 等快充协议，充电质量评分与历史曲线图表。</p>
                         <ul class="tags">
                             <li>Kotlin</li>
                             <li>Compose</li>
@@ -187,7 +195,7 @@
                         </ul>
                     </div>
                     <div class="card-links">
-                        <a href="charging-monitor/">DETAILS ⟶</a>
+                        <a href="charging-monitor/" data-i18n="card4.details">DETAILS ⟶</a>
                         <a href="https://play.google.com/store/apps/details?id=com.gyaoshi.chargingmonitor" target="_blank" rel="noopener">GOOGLE PLAY ↗</a>
                     </div>
                 </article>
@@ -198,9 +206,9 @@
         <section id="stack" class="section">
             <div class="sec-head reveal">
                 <span class="sec-idx">02</span>
-                <h2>技术装备<span class="sec-en">TECH ARSENAL</span></h2>
+                <h2><span data-i18n="sec2.title">技术装备</span><span class="sec-en">TECH ARSENAL</span></h2>
                 <span class="sec-line"></span>
-                <span class="sec-note">LOADED</span>
+                <span class="sec-note" data-i18n="sec2.note">LOADED</span>
             </div>
 
             <div class="panels">
@@ -215,7 +223,7 @@
                         <li>Sensor Fusion</li>
                     </ul>
                     <div class="panel-bar" style="--fill: 92%"><span></span></div>
-                    <p class="panel-foot">APK / AAB · GOOGLE PLAY 上架</p>
+                    <p class="panel-foot" data-i18n="stack.foot1">APK / AAB · GOOGLE PLAY 上架</p>
                 </div>
 
                 <div class="panel reveal">
@@ -225,10 +233,10 @@
                         <li>Manifest V3</li>
                         <li>declarativeNetRequest</li>
                         <li>Content Scripts</li>
-                        <li>iframe 多栏布局</li>
+                        <li data-i18n="stack.iframe">iframe 多栏布局</li>
                     </ul>
                     <div class="panel-bar" style="--fill: 86%"><span></span></div>
-                    <p class="panel-foot">CHROME WEB STORE 上架</p>
+                    <p class="panel-foot" data-i18n="stack.foot2">CHROME WEB STORE 上架</p>
                 </div>
 
                 <div class="panel reveal">
@@ -237,10 +245,10 @@
                         <li>Git / GitHub</li>
                         <li>GitHub Pages</li>
                         <li>AdMob / app-ads.txt</li>
-                        <li>隐私政策与合规</li>
+                        <li data-i18n="stack.privacy">隐私政策与合规</li>
                     </ul>
                     <div class="panel-bar" style="--fill: 80%"><span></span></div>
-                    <p class="panel-foot">从写码到上架的完整闭环</p>
+                    <p class="panel-foot" data-i18n="stack.foot3">从写码到上架的完整闭环</p>
                 </div>
             </div>
         </section>
@@ -249,28 +257,28 @@
         <section id="uplink" class="section">
             <div class="sec-head reveal">
                 <span class="sec-idx">03</span>
-                <h2>链路<span class="sec-en">UPLINK</span></h2>
+                <h2><span data-i18n="sec3.title">链路</span><span class="sec-en">UPLINK</span></h2>
                 <span class="sec-line"></span>
-                <span class="sec-note">OPEN</span>
+                <span class="sec-note" data-i18n="sec3.note">OPEN</span>
             </div>
 
             <div class="links reveal">
                 <a class="link-row" href="https://github.com/gyaoshi" target="_blank" rel="noopener">
                     <span class="link-idx">A.</span>
                     <span class="link-name">GitHub</span>
-                    <span class="link-meta">@gyaoshi · 源码与提交记录</span>
+                    <span class="link-meta" data-i18n="link1.meta">@gyaoshi · 源码与提交记录</span>
                     <span class="link-arrow">↗</span>
                 </a>
                 <a class="link-row" href="https://play.google.com/store/apps/developer?id=gyaoshi" target="_blank" rel="noopener">
                     <span class="link-idx">B.</span>
                     <span class="link-name">Google Play</span>
-                    <span class="link-meta">开发者主页 · 3 款上架应用</span>
+                    <span class="link-meta" data-i18n="link2.meta">开发者主页 · 3 款上架应用</span>
                     <span class="link-arrow">↗</span>
                 </a>
                 <a class="link-row" href="https://chrome.google.com/webstore/detail/dfmpcglhkdiihjkmmdefcjpalcfmjcci" target="_blank" rel="noopener">
                     <span class="link-idx">C.</span>
                     <span class="link-name">Chrome Web Store</span>
-                    <span class="link-meta">Multi AI 扩展</span>
+                    <span class="link-meta" data-i18n="link3.meta">Multi AI 扩展</span>
                     <span class="link-arrow">↗</span>
                 </a>
             </div>
@@ -282,7 +290,5 @@
         <span class="foot-mid">BUILT WITH RAW HTML / CSS / JS</span>
         <span>STATUS: <b>ALL SYSTEMS NOMINAL</b></span>
     </footer>
-
-    <script src="assets/main.js"></script>
 </body>
 </html>
